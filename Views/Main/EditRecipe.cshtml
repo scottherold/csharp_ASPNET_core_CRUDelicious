@@ -1,0 +1,53 @@
+@model Dish
+<!-- Insert Model Here -->
+<div class="row justify-content-center">
+    <div class="col-lg-10 rounded justify-content-center m-4 bg-white">
+        <div class="row justify-content-center m-3 border-bottom">
+            <h2>Edit Dish</h2>
+        </div>
+        <!-- When connected to the DB, use the placeholder ability in HTML to populate the form with -->
+        <!--  the current DB information -->
+        <form asp-action="Update" asp-controller="Main" method="POST" asp-route-dishId="@Model.DishId">
+            <div class="form-row justify-content-center m-3 border-bottom">
+                <div class="col-lg-3 mt-3 mb-3 text-center">
+                    <label asp-for="Chef"><h5>Chef's Name</h5></label>
+                    <input type="text" asp-for="Chef" placeholder="@Model.Chef">
+                    <p><span asp-validation-for="Chef" class="text-danger"></span></p>
+                    <label for="Name" class="mt-3"><h5>Name of Dish</h5></label>
+                    <input type="text" asp-for="Name" placeholder="@Model.Name">
+                    <p><span asp-validation-for="Name" class="text-danger"></span></p>
+                    <label asp-for="Calories" class="mt-3"><h5># of Calories</h5></label>
+                    <input type="text" asp-for="Calories" placeholder="@Model.Calories">
+                    <p><span asp-validation-for="Calories" class="text-danger"></span></p>
+                </div>
+                <div class="col-lg-3 mt-3 mb-3">
+                    <div class="form-row justify-content-center">
+                        <label asp-for="Tastiness"><h5>Tastiness</h5></label>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <select asp-for="Tastiness">
+                            <option value="1" @if(Model.Tastiness == 1) { selected }>1</option>
+                            <option value="2" @if(Model.Tastiness == 2) { selected }>2</option>
+                            <option value="3" @if(Model.Tastiness == 3) { selected }>3</option>
+                            <option value="4" @if(Model.Tastiness == 4) { selected }>4</option>
+                            <option value="5" @if(Model.Tastiness == 5) { selected }>5</option>
+                        </select>
+                        <p><span asp-validation-for="Tastiness" class="text-danger"></span></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3 mb-3 text-center">
+                    <div class="form-row justify-content-Start">
+                        <label asp-for="Description"><h5>Description</h5></label>
+                    </div>
+                    <div class="form-row justify-content-Start">
+                        <textarea class="w-100" asp-for="Description" rows="7" placeholder="@Model.Description"></textarea>
+                        <p><span asp-validation-for="Description" class="text-danger"></span></p>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <button type="submit" class="btn btn-success mt-2">Edit Dish</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
